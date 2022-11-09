@@ -1,0 +1,23 @@
+<div class="container">
+<h2><%= @task.title %></h2>
+<div class="card-header">
+<p><%= @task.details %></p>
+</div>
+<br>
+<% if @task.completed == true %>
+  <input type="checkbox" id="completed" name="completed" checked>
+  <label for="completed">
+  The task is completed
+  </label>
+  <br>
+<% else %>
+  <input type="checkbox" id="completed" name="completed" >
+  <label for="completed">
+  The task is not completed yet
+  </label>
+  <br>
+<% end %>
+<br>
+<%= link_to "Edit task", "/tasks/#{@task.id}/edit", :class => "btn btn-secondary" %>
+<%= link_to "Go back to list", "/tasks", :class => "btn btn-primary" %>
+</div>

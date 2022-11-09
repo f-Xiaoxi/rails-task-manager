@@ -1,0 +1,21 @@
+<div class="container">
+<h1>My tasks</h1>
+<% @tasks.each do |task| %>
+<%= form_with model: task do |f| %>
+<%= f.check_box :completed %>
+  <label for="task">
+    <%= link_to "#{task.title}", "/tasks/#{task.id}", { class: "nav-link active" }%>
+  </label>
+   <%= link_to "Delete",
+  task_path(task),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
+<i class="fa-solid fa-trash"></i>
+  <br>
+<% end %>
+<% end %>
+
+<p>
+<%= link_to "Add new task", "/tasks/new", :class => "btn btn-primary btn-sm" %>
+</p>
+</div>
